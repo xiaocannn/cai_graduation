@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2019-05-06 15:38:28
+Date: 2019-05-12 13:52:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,22 +21,41 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `cartlist`;
 CREATE TABLE `cartlist` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `_id` int(11) DEFAULT NULL,
-  `goods` varchar(255) DEFAULT NULL,
-  `num` int(11) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `tel` varchar(255) DEFAULT NULL,
+  `_id` int(11) NOT NULL,
+  `goods` varchar(255) NOT NULL,
+  `num` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `tel` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cartlist
 -- ----------------------------
-INSERT INTO `cartlist` VALUES ('12', '2', '满天星花束同城闺蜜生日毕业礼物鲜花', '1', '25.90', 'https://img.alicdn.com/imgextra/i1/3563068145/TB1nSG0jnTI8KJjSsphXXcFppXa_!!0-item_pic.jpg_760x760Q50s50.jpg_.webp', '13641465583');
-INSERT INTO `cartlist` VALUES ('13', '4', '满天星花束同城闺蜜生日毕业礼物鲜花', '2', '99.00', 'https://img.alicdn.com/imgextra/i1/2943021236/O1CN01ywGiOg1L081fVa9bw_!!2943021236.jpg_760x760Q50s50.jpg_.webp', '13641465583');
-INSERT INTO `cartlist` VALUES ('14', '7', '满天星花束同城闺蜜生日毕业礼物鲜花', '1', '158.00', 'https://img.alicdn.com/imgextra/i1/2943021236/O1CN01ywGiOg1L081fVa9bw_!!2943021236.jpg_760x760Q50s50.jpg_.webp', '13641465583');
-INSERT INTO `cartlist` VALUES ('15', '1', '康乃馨花束毕业鲜花', '5', '239.00', 'https://img.alicdn.com/imgextra/i1/TB1gRB9LVXXXXXaXVXXXXXXXXXX_!!0-item_pic.jpg_2200x2200Q100s50.jpg_.webp', '13641465583');
+INSERT INTO `cartlist` VALUES ('33', '2', '满天星花束同城闺蜜生日毕业礼物鲜花', '1', '25.90', 'ban3.jpg', '13682313460');
+INSERT INTO `cartlist` VALUES ('34', '4', '满天星花束同城闺蜜生日毕业礼物鲜花', '1', '99.00', 'ban3.jpg', '13682313460');
+INSERT INTO `cartlist` VALUES ('35', '5', '满天星花束同城闺蜜生日毕业礼物鲜花', '3', '89.00', 'ban3.jpg', '13682313460');
+INSERT INTO `cartlist` VALUES ('16', '1', '康乃馨花束毕业鲜花', '1', '239.00', 'ban4.jpg', '13641465583');
+INSERT INTO `cartlist` VALUES ('17', '2', '满天星花束同城闺蜜生日毕业礼物鲜花', '2', '25.90', 'ban1.jpg', '13641465583');
+
+-- ----------------------------
+-- Table structure for category
+-- ----------------------------
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `category` varchar(255) NOT NULL,
+  `addTime` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of category
+-- ----------------------------
+INSERT INTO `category` VALUES ('1', '毕业鲜花', '10');
+INSERT INTO `category` VALUES ('2', '毕业气球', '10');
+INSERT INTO `category` VALUES ('3', '毕业服装', '10');
 
 -- ----------------------------
 -- Table structure for goodslist
@@ -44,27 +63,29 @@ INSERT INTO `cartlist` VALUES ('15', '1', '康乃馨花束毕业鲜花', '5', '2
 DROP TABLE IF EXISTS `goodslist`;
 CREATE TABLE `goodslist` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `classity` varchar(255) DEFAULT NULL,
-  `picture` varchar(10000) DEFAULT NULL,
-  `specification` varchar(255) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
-  `explain` varchar(255) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `addTime` varchar(255) NOT NULL,
+  `classity` varchar(255) NOT NULL,
+  `picture` varchar(10000) NOT NULL,
+  `specification` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `explain` varchar(255) NOT NULL,
+  `oldprice` decimal(10,2) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of goodslist
 -- ----------------------------
-INSERT INTO `goodslist` VALUES ('1', '康乃馨花束毕业鲜花', '新西兰', '鲜花类', 'https://img.alicdn.com/imgextra/i1/TB1gRB9LVXXXXXaXVXXXXXXXXXX_!!0-item_pic.jpg_2200x2200Q100s50.jpg_.webp&https:////img.alicdn.com/imgextra/i4/2104939368/TB2BeSQlXXXXXaMXXXXXXXXXXXX_!!2104939368.jpg_760x760Q50s50.jpg&https://img.alicdn.com/imgextra/i4/2104939368/TB29ceslXXXXXaLXpXXXXXXXXXX_!!2104939368.jpg_760x760Q50s50.jpg&', '400g/包', '239.00', '颜色鲜艳');
-INSERT INTO `goodslist` VALUES ('2', '满天星花束同城闺蜜生日毕业礼物鲜花', '丹麦', '精选肉类', 'https://img.alicdn.com/imgextra/i1/3563068145/TB1nSG0jnTI8KJjSsphXXcFppXa_!!0-item_pic.jpg_760x760Q50s50.jpg_.webp&https://img.alicdn.com/imgextra/i4/3563068145/TB2DCiUjmYH8KJjSspdXXcRgVXa_!!3563068145.jpg_760x760Q50s50.jpg_.webp&', '700g/包', '25.90', '鲜花基地直发红白荔枝玫瑰花');
-INSERT INTO `goodslist` VALUES ('3', '19朵香槟玫瑰毕业花束', '山东烟台', '新鲜蔬菜', 'https://img.alicdn.com/imgextra/i4/3416089013/TB22uakhQ.HL1JjSZFuXXX8dXXa_!!3416089013.jpg_760x760Q50s50.jpg_.webp&https://img.alicdn.com/imgextra/i3/3416089013/TB23EvXeHsTMeJjy1zbXXchlVXa_!!3416089013.jpg_760x760Q50s50.jpg_.webp&', '2.5kg/份', '99.00', '鲜花基地直发红白荔枝玫瑰花');
-INSERT INTO `goodslist` VALUES ('4', '满天星花束同城闺蜜生日毕业礼物鲜花', '上海宝山', '新鲜蔬菜', 'https://img.alicdn.com/imgextra/i1/2943021236/O1CN01ywGiOg1L081fVa9bw_!!2943021236.jpg_760x760Q50s50.jpg_.webp&https://img.alicdn.com/imgextra/i2/2943021236/O1CN01jUCjKk1L082DKeUZb_!!2943021236.jpg_760x760Q50s50.jpg_.webp&', '500g/份', '99.00', '鲜花基地直发红白荔枝玫瑰花');
-INSERT INTO `goodslist` VALUES ('5', '满天星花束同城闺蜜生日毕业礼物鲜花', '上海宝山', '新鲜蔬菜', 'https://img.alicdn.com/imgextra/i4/3416089013/TB22uakhQ.HL1JjSZFuXXX8dXXa_!!3416089013.jpg_760x760Q50s50.jpg_.webp&https://img.alicdn.com/imgextra/i3/3416089013/TB23EvXeHsTMeJjy1zbXXchlVXa_!!3416089013.jpg_760x760Q50s50.jpg_.webp&', '500g/份', '89.00', '鲜花基地直发红白荔枝玫瑰花');
-INSERT INTO `goodslist` VALUES ('6', '满天星花束同城闺蜜生日毕业礼物鲜花', '上海宝山', '新鲜蔬菜', 'https://img.alicdn.com/imgextra/i1/2943021236/O1CN01ywGiOg1L081fVa9bw_!!2943021236.jpg_760x760Q50s50.jpg_.webp&https://img.alicdn.com/imgextra/i2/2943021236/O1CN01jUCjKk1L082DKeUZb_!!2943021236.jpg_760x760Q50s50.jpg_.webp&', '500g/份', '150.00', '鲜花基地直发红白荔枝玫瑰花');
-INSERT INTO `goodslist` VALUES ('7', '满天星花束同城闺蜜生日毕业礼物鲜花', '上海宝山', '新鲜蔬菜', 'https://img.alicdn.com/imgextra/i1/2943021236/O1CN01ywGiOg1L081fVa9bw_!!2943021236.jpg_760x760Q50s50.jpg_.webp&https://img.alicdn.com/imgextra/i2/2943021236/O1CN01jUCjKk1L082DKeUZb_!!2943021236.jpg_760x760Q50s50.jpg_.webp&', '500g/份', '158.00', '鲜花基地直发红白荔枝玫瑰花');
-INSERT INTO `goodslist` VALUES ('8', '网红草莓毕业花束鲜花', '上海宝山', '新鲜蔬菜', 'https://img.alicdn.com/imgextra/i2/3478433557/O1CN01lELJzg1c99I6lgtEU_!!0-item_pic.jpg_760x760Q50s50.jpg_.webp&https://img.alicdn.com/imgextra/i2/3478433557/O1CN01YN5lHU1c99I2ufSxd_!!3478433557.jpg_760x760Q50s50.jpg_.webp&', '500g/份', '160.00', '鲜花基地直发红白荔枝玫瑰花');
+INSERT INTO `goodslist` VALUES ('1', '康乃馨花束毕业鲜花', '1554281501736', '毕业鲜花', 'ban1.jpg&ban2.jpg&ban3.jpg', '400g/包', '239.00', '颜色鲜艳', null, null);
+INSERT INTO `goodslist` VALUES ('2', '满天星花束同城闺蜜生日毕业礼物鲜花', '1554281501736', '毕业鲜花', 'ban3.jpg&ban3.jpg&ban3.jpg', '700g/包', '25.90', '鲜花基地直发红白荔枝玫瑰花', null, null);
+INSERT INTO `goodslist` VALUES ('3', '19朵香槟玫瑰毕业花束', '1554281501736', '毕业鲜花', 'ban3.jpg&ban3.jpg&ban3.jpg', '2.5kg/份', '99.00', '鲜花基地直发红白荔枝玫瑰花', null, null);
+INSERT INTO `goodslist` VALUES ('4', '满天星花束同城闺蜜生日毕业礼物鲜花', '1554281501736', '毕业鲜花', 'ban3.jpg&ban3.jpg&ban3.jpg', '500g/份', '99.00', '鲜花基地直发红白荔枝玫瑰花', null, null);
+INSERT INTO `goodslist` VALUES ('5', '满天星花束同城闺蜜生日毕业礼物鲜花', '1554281501736', '毕业鲜花', 'ban3.jpg&ban3.jpg&ban3.jpg', '500g/份', '89.00', '鲜花基地直发红白荔枝玫瑰花', null, null);
+INSERT INTO `goodslist` VALUES ('6', '满天星花束同城闺蜜生日毕业礼物鲜花', '1554281501736', '毕业气球', 'ban3.jpg&ban3.jpg&ban3.jpg', '500g/份', '150.00', '鲜花基地直发红白荔枝玫瑰花', null, null);
+INSERT INTO `goodslist` VALUES ('7', '满天星花束同城闺蜜生日毕业礼物鲜花', '1554281501736', '毕业服装', 'ban3.jpg&ban3.jpg&ban3.jpg', '500g/份', '158.00', '鲜花基地直发红白荔枝玫瑰花', null, null);
+INSERT INTO `goodslist` VALUES ('8', '网红草莓毕业花束鲜花', '1554281501736', '毕业服装', 'ban3.jpg&ban3.jpg&ban3.jpg', '500g/份', '160.00', '鲜花基地直发红白荔枝玫瑰花', null, null);
 
 -- ----------------------------
 -- Table structure for users
@@ -72,8 +93,8 @@ INSERT INTO `goodslist` VALUES ('8', '网红草莓毕业花束鲜花', '上海�
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) DEFAULT NULL,
-  `psw` varchar(255) DEFAULT NULL,
+  `username` varchar(255) NOT NULL,
+  `psw` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
