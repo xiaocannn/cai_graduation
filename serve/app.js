@@ -10,8 +10,8 @@ var cartRouter=require('./routes/cart.js');
 var goodsRouter=require('./routes/goods.js');
 
 // 后台管理系统的路由
-var adLoginRouter=require('./routes/ad_login.js');
-var adGoodslistRouter=require('./routes/ad_goodslist.js');
+// var adLoginRouter=require('./routes/ad_login.js');
+// var adGoodslistRouter=require('./routes/ad_goodslist.js');
 
 
 var app = express();
@@ -32,8 +32,8 @@ app.use('/cart', cartRouter);
 app.use('/goods', goodsRouter);
 
 // 后台管理系统的路由
-app.use('/ad_login', adLoginRouter);
-app.use('/ad_goods', adGoodslistRouter);
+// app.use('/ad_login', adLoginRouter);
+// app.use('/ad_goods', adGoodslistRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

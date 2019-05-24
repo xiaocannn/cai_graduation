@@ -10,7 +10,7 @@ router.get('/goodsAll', function (req, res, next) {
     });
 });
 
-router.get('/search', function (req, res, next) {
+router.get('/search', function (req, res, next) { 
     res.append('Access-Control-Allow-Origin', '*');
     // console.log(req.query);
     let { searchname } = req.query;
